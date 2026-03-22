@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate Verification</title>
 
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            width: 50px;
+        }
+
+        .company-name {
+            margin-left: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="vebzon.jpg" class="logo">
+    <div class="company-name">Vebzon Technologies</div>
+</div>
+
+<!-- CENTER -->
+<div class="container">
+    <div class="card">
+
+        <h2>Certificate Verification</h2>
+
+        <input type="text" id="certId" placeholder="Enter Certificate ID">
+        <br>
+        <button onclick="verify()">Verify</button>
+
+        <div id="result" class="result"></div>
+
+    </div>
+</div>
+
+<script>
+const data = {
+"VEBZON2026-482": {name:"JEROME CHRISTOPER J", course:"Web Development"},
+"VEBZON2026-739": {name:"ROSHAN ABOORVA RAJ J", course:"Web Development"},
+"VEBZON2026-156": {name:"PRASANNA J", course:"Generative AI"},
+"VEBZON2026-893": {name:"RAGHURAM K", course:"Generative AI"},
+"VEBZON2026-274": {name:"MOHAMED FARHAN M", course:"Generative AI"},
+"VEBZON2026-615": {name:"SRIVISHWA A", course:"Generative AI"},
+"VEBZON2026-948": {name:"VIKNESHWARAN M", course:"Generative AI"},
+"VEBZON2026-327": {name:"KEERTHANA G", course:"Generative AI"},
+"VEBZON2026-561": {name:"DEEPIKA P", course:"Generative AI"},
+"VEBZON2026-804": {name:"INDUJA N", course:"Generative AI"},
+"VEBZON2026-219": {name:"ARCHANA R S", course:"Generative AI"},
+"VEBZON2026-677": {name:"MELVIN JEFFERSON", course:"Generative AI"},
+"VEBZON2026-345": {name:"LAKSHMI NARAYANAN P", course:"Web Development"},
+"VEBZON2026-902": {name:"SATHYA PRAKASH A", course:"Web Development"},
+"VEBZON2026-438": {name:"JEEVANANTHAM R", course:"Generative AI"},
+"VEBZON2026-791": {name:"MUGESH D", course:"Generative AI"},
+"VEBZON2026-263": {name:"ADHITHIYAN M", course:"Generative AI"},
+"VEBZON2026-556": {name:"KRISHNAKUMAR T", course:"Generative AI"}
+};
+
+function verify() {
+    let id = document.getElementById("certId").value.trim();
+    let result = document.getElementById("result");
+
+    if (data[id]) {
+        let d = data[id];
+
+        result.innerHTML = `
+        <p class="success">✔ Certificate Verified</p>
+        <p><b>Student Name:</b> ${d.name}</p>
+        <p><b>Certificate ID:</b> ${id}</p>
+        <p><b>College:</b> K.RAMAKRISHNAN COLLEGE OF TECHNOLOGY</p>
+        <p><b>Course:</b> ${d.course}</p>
+        <p><b>Start Date:</b> 01-02-2026</p>
+        <p><b>End Date:</b> 02-03-2026</p>
+        `;
+    } else {
+        result.innerHTML = `<p class="error">❌ Invalid Certificate ID</p>`;
+    }
+}
+</script>
+
+</body>
+</html>
